@@ -1,0 +1,67 @@
+/***************************************************************************
+ * 
+ * Copyright (c) 2012 izptec.com, Inc. All Rights Reserved
+ * $Id$ 
+ * 
+ **************************************************************************/
+ 
+ 
+ 
+/**
+ * @file functional.cpp
+ * @author YAO LU(luyao@izptec.com)
+ * @date 2012/07/05 10:21:05
+ * @version 1.0 
+ * @brief 
+ *  
+ **/
+
+#include <functional>
+#include <iostream>
+#include <cstdlib>
+#include <string.h>
+using namespace std;
+
+std::function<size_t (const char*)>func;
+
+size_t strLen(const char *pStr)
+{
+	return pStr?strlen(pStr):0;
+}
+
+class fun{
+public:
+	size_t operator()(const char *pStr)
+	{
+		return pStr?strlen(pStr):0;
+	}
+};
+
+int main()
+{
+	func = strLen;
+	fun tmp;
+	cout<<strLen("hello world")<<endl;
+	cout<<func("hello world")<<endl;
+	func = tmp;
+	cout<<func("hello world")<<endl;
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* vim: set ts=4 sw=4 sts=4 tw=100 noet: */
